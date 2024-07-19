@@ -3,6 +3,7 @@ import { swalError } from "@/utils";
 import { fetchAI } from "@/utils/fetch-ai";
 import { MagicWandIcon } from "@radix-ui/react-icons";
 import {
+    Badge,
     Blockquote,
     Box,
     Button,
@@ -17,35 +18,35 @@ import {
 import { useState } from "react";
 
 export type RekomendasiNamaBisnisSettingType = {
-    tema: string;
-    nama_produk: string;
-    deskripsi_produk: string;
-    harga_produk: string;
-    sosial_media: string;
-    tone: string;
-    target_audiens: string;
-    call_to_action: string;
-    keyword: string;
-    panjang_caption: string;
+    jenis_bisnis: string;
+    target_pasar: string;
+    nilai_jual_utama: string;
+    visi_misi: string;
+    tone_brand: string;
+    kata_kunci: string;
+    konotasi: string;
+    bahasa: string;
+    panjang_nama: string;
+    contoh_nama_disukai: string;
+    nama_dilarang: string;
 };
 
 export const RekomendasiNamaBisnisSettingInitial: RekomendasiNamaBisnisSettingType =
     {
-        tema: "",
-        nama_produk: "",
-        deskripsi_produk: "",
-        harga_produk: "",
-        sosial_media: "",
-        tone: "",
-        target_audiens: "",
-        call_to_action: "",
-        keyword: "",
-        panjang_caption: "",
+        jenis_bisnis: "",
+        target_pasar: "",
+        nilai_jual_utama: "",
+        visi_misi: "",
+        tone_brand: "",
+        kata_kunci: "",
+        konotasi: "",
+        bahasa: "",
+        panjang_nama: "",
+        contoh_nama_disukai: "",
+        nama_dilarang: "",
     };
 
-type Props = {};
-
-export default function RekomendasiNamaBisnisTab({}: Props) {
+export default function RekomendasiNamaBisnisTab() {
     const [setting, setSetting] = useState<RekomendasiNamaBisnisSettingType>(
         RekomendasiNamaBisnisSettingInitial
     );
@@ -80,10 +81,11 @@ export default function RekomendasiNamaBisnisTab({}: Props) {
         <section>
             <Card className="mb-4">
                 <Heading as="h4" size="3">
-                    Buat Caption Sosial Media
+                    Minta Rekomendasi Nama Bisnis
                 </Heading>
                 <Text as="p" size="1">
-                    Minta bantuan AI Asisten untuk membuat caption sosial media.
+                    Minta bantuan AI Asisten untuk merekomendasikan nama bisnis
+                    Anda.
                 </Text>
 
                 <Separator my="3" size="4" />
@@ -91,117 +93,120 @@ export default function RekomendasiNamaBisnisTab({}: Props) {
                     <DataList.Root className="h-min">
                         <DataList.Item>
                             <DataList.Label minWidth="88px">
-                                Tema / Topik
+                                Jenis Bisnis
                             </DataList.Label>
                             <DataList.Value>
                                 <Box className="w-full">
                                     <TextField.Root
                                         className="w-full"
                                         size="2"
-                                        value={setting.tema}
+                                        value={setting.jenis_bisnis}
                                         onChange={(e) =>
                                             setSetting((oldState) => ({
                                                 ...oldState,
-                                                tema: e.target.value,
+                                                jenis_bisnis: e.target.value,
                                             }))
                                         }
                                     />
                                     <Blockquote size="1">
-                                        Contoh : Promosi produk baru skincare
+                                        Apa yang akan Anda jual atau lakukan?
+                                        (produk fisik, jasa, digital, dll.)
                                     </Blockquote>
                                 </Box>
                             </DataList.Value>
                         </DataList.Item>
                         <DataList.Item>
                             <DataList.Label minWidth="88px">
-                                Nama Produk
+                                Target Pasar
                             </DataList.Label>
                             <DataList.Value>
                                 <Box className="w-full">
                                     <TextField.Root
                                         className="w-full"
                                         size="2"
-                                        value={setting.nama_produk}
+                                        value={setting.target_pasar}
                                         onChange={(e) =>
                                             setSetting((oldState) => ({
                                                 ...oldState,
-                                                nama_produk: e.target.value,
+                                                target_pasar: e.target.value,
                                             }))
                                         }
                                     />
                                     <Blockquote size="1">
-                                        Contoh : Scrum Care
+                                        Siapa konsumen ideal Anda? (umur, jenis
+                                        kelamin, minat, gaya hidup)
                                     </Blockquote>
                                 </Box>
                             </DataList.Value>
                         </DataList.Item>
                         <DataList.Item>
                             <DataList.Label minWidth="88px">
-                                Deskripsi Produk
+                                Nilai Jual Utama
                             </DataList.Label>
                             <DataList.Value>
                                 <Box className="w-full">
                                     <TextField.Root
                                         className="w-full"
                                         size="2"
-                                        value={setting.deskripsi_produk}
+                                        value={setting.nilai_jual_utama}
                                         onChange={(e) =>
                                             setSetting((oldState) => ({
                                                 ...oldState,
-                                                deskripsi_produk:
+                                                nilai_jual_utama:
                                                     e.target.value,
                                             }))
                                         }
                                     />
                                     <Blockquote size="1">
-                                        Contoh : Serum wajah dengan kandungan
-                                        vitamin C, melembapkan kulit
+                                        Apa yang membuat bisnis Anda unik atau
+                                        berbeda dari kompetitor?
                                     </Blockquote>
                                 </Box>
                             </DataList.Value>
                         </DataList.Item>
                         <DataList.Item>
                             <DataList.Label minWidth="88px">
-                                Harga Produk
+                                Visi dan Misi
                             </DataList.Label>
                             <DataList.Value>
                                 <Box className="w-full">
                                     <TextField.Root
                                         className="w-full"
                                         size="2"
-                                        value={setting.harga_produk}
+                                        value={setting.visi_misi}
                                         onChange={(e) =>
                                             setSetting((oldState) => ({
                                                 ...oldState,
-                                                harga_produk: e.target.value,
+                                                visi_misi: e.target.value,
                                             }))
                                         }
                                     />
                                     <Blockquote size="1">
-                                        Contoh : Rp25000
+                                        Apa tujuan jangka panjang bisnis Anda?
                                     </Blockquote>
                                 </Box>
                             </DataList.Value>
                         </DataList.Item>
                         <DataList.Item>
                             <DataList.Label minWidth="88px">
-                                Sosial Media
+                                Tone atau Nuansa Brand
                             </DataList.Label>
                             <DataList.Value>
                                 <Box className="w-full">
                                     <TextField.Root
                                         className="w-full"
                                         size="2"
-                                        value={setting.sosial_media}
+                                        value={setting.tone_brand}
                                         onChange={(e) =>
                                             setSetting((oldState) => ({
                                                 ...oldState,
-                                                sosial_media: e.target.value,
+                                                tone_brand: e.target.value,
                                             }))
                                         }
                                     />
                                     <Blockquote size="1">
-                                        Contoh : Instagram
+                                        Apakah brand ingin terlihat mewah,
+                                        modern, klasik, lucu, atau profesional?
                                     </Blockquote>
                                 </Box>
                             </DataList.Value>
@@ -210,117 +215,146 @@ export default function RekomendasiNamaBisnisTab({}: Props) {
                     <DataList.Root className="h-min">
                         <DataList.Item>
                             <DataList.Label minWidth="88px">
-                                Tone / Nada
+                                Kata Kunci Utama
                             </DataList.Label>
                             <DataList.Value>
                                 <Box className="w-full">
                                     <TextField.Root
                                         className="w-full"
                                         size="2"
-                                        value={setting.tone}
+                                        value={setting.kata_kunci}
                                         onChange={(e) =>
                                             setSetting((oldState) => ({
                                                 ...oldState,
-                                                tone: e.target.value,
+                                                kata_kunci: e.target.value,
                                             }))
                                         }
                                     />
                                     <Blockquote size="1">
-                                        Contoh : Lucu dan santai
+                                        Kata atau frasa apa yang ingin Anda
+                                        sorot dalam nama bisnis?
                                     </Blockquote>
                                 </Box>
                             </DataList.Value>
                         </DataList.Item>
                         <DataList.Item>
                             <DataList.Label minWidth="88px">
-                                Target Audiens
+                                Konotasi yang Diinginkan
                             </DataList.Label>
                             <DataList.Value>
                                 <Box className="w-full">
                                     <TextField.Root
                                         className="w-full"
                                         size="2"
-                                        value={setting.target_audiens}
+                                        value={setting.konotasi}
                                         onChange={(e) =>
                                             setSetting((oldState) => ({
                                                 ...oldState,
-                                                target_audiens: e.target.value,
+                                                konotasi: e.target.value,
                                             }))
                                         }
                                     />
                                     <Blockquote size="1">
-                                        Contoh : Wanita berusia 20-30 tahun
+                                        Apakah nama bisnis harus terdengar unik,
+                                        mudah diingat, atau memiliki makna
+                                        tertentu?
                                     </Blockquote>
                                 </Box>
                             </DataList.Value>
                         </DataList.Item>
                         <DataList.Item>
                             <DataList.Label minWidth="88px">
-                                Call to Action
+                                Bahasa
                             </DataList.Label>
                             <DataList.Value>
                                 <Box className="w-full">
                                     <TextField.Root
                                         className="w-full"
                                         size="2"
-                                        value={setting.call_to_action}
+                                        value={setting.bahasa}
                                         onChange={(e) =>
                                             setSetting((oldState) => ({
                                                 ...oldState,
-                                                call_to_action: e.target.value,
+                                                bahasa: e.target.value,
                                             }))
                                         }
                                     />
                                     <Blockquote size="1">
-                                        Contoh : Ajak followers untuk membeli
-                                        produk atau memberikan komentar
+                                        Bahasa apa yang ingin digunakan untuk
+                                        nama bisnis?
                                     </Blockquote>
                                 </Box>
                             </DataList.Value>
                         </DataList.Item>
                         <DataList.Item>
                             <DataList.Label minWidth="88px">
-                                Keyword / Hashtag
+                                Panjang Nama
                             </DataList.Label>
                             <DataList.Value>
                                 <Box className="w-full">
                                     <TextField.Root
                                         className="w-full"
                                         size="2"
-                                        value={setting.keyword}
+                                        value={setting.panjang_nama}
                                         onChange={(e) =>
                                             setSetting((oldState) => ({
                                                 ...oldState,
-                                                keyword: e.target.value,
+                                                panjang_nama: e.target.value,
                                             }))
                                         }
                                     />
                                     <Blockquote size="1">
-                                        Contoh : #skincarenatural, #glowingskin,
-                                        #kulitcerah
+                                        Apakah nama bisnis lebih baik pendek,
+                                        sedang, atau panjang?
                                     </Blockquote>
                                 </Box>
                             </DataList.Value>
                         </DataList.Item>
                         <DataList.Item>
                             <DataList.Label minWidth="88px">
-                                Panjang Caption
+                                Contoh Nama yang Disukai
                             </DataList.Label>
                             <DataList.Value>
                                 <Box className="w-full">
                                     <TextField.Root
                                         className="w-full"
                                         size="2"
-                                        value={setting.panjang_caption}
+                                        value={setting.contoh_nama_disukai}
                                         onChange={(e) =>
                                             setSetting((oldState) => ({
                                                 ...oldState,
-                                                panjang_caption: e.target.value,
+                                                contoh_nama_disukai:
+                                                    e.target.value,
                                             }))
                                         }
                                     />
                                     <Blockquote size="1">
-                                        Contoh : Pendek
+                                        Jika ada, berikan beberapa contoh nama
+                                        yang Anda sukai sebagai referensi.
+                                    </Blockquote>
+                                </Box>
+                            </DataList.Value>
+                        </DataList.Item>
+                        <DataList.Item>
+                            <DataList.Label minWidth="88px">
+                                Nama yang Dilarang
+                            </DataList.Label>
+                            <DataList.Value>
+                                <Box className="w-full">
+                                    <TextField.Root
+                                        className="w-full"
+                                        size="2"
+                                        value={setting.nama_dilarang}
+                                        onChange={(e) =>
+                                            setSetting((oldState) => ({
+                                                ...oldState,
+                                                nama_dilarang: e.target.value,
+                                            }))
+                                        }
+                                    />
+                                    <Blockquote size="1">
+                                        Sebutkan nama yang ingin Anda hindari
+                                        karena alasan tertentu.
                                     </Blockquote>
                                 </Box>
                             </DataList.Value>
@@ -335,18 +369,27 @@ export default function RekomendasiNamaBisnisTab({}: Props) {
                 disabled={isLoading}
             >
                 <MagicWandIcon />
-                Buat Caption
+                Minta Rekomendasi
             </Button>
 
-            <Grid className="my-4" columns={{ sm: "1", md: "3" }} gap="4">
-                {results.map((res, idx) => {
-                    return (
-                        <Card key={idx}>
-                            <Text>{res}</Text>
-                        </Card>
-                    );
-                })}
-            </Grid>
+            {results.length > 0 && (
+                <Card className="my-4 w-fit">
+                    <Grid columns={{ sm: "1", md: "1" }} gap="4">
+                        {results.map((res, idx) => {
+                            return (
+                                <Badge
+                                    key={idx}
+                                    size="3"
+                                    color="indigo"
+                                    className="w-fit"
+                                >
+                                    {res}
+                                </Badge>
+                            );
+                        })}
+                    </Grid>
+                </Card>
+            )}
         </section>
     );
 }

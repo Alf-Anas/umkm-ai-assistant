@@ -17,29 +17,29 @@ import {
 import { useState } from "react";
 
 export type CaptionProdukSettingType = {
-    tema: string;
     nama_produk: string;
     deskripsi_produk: string;
     harga_produk: string;
-    sosial_media: string;
+    manfaat_utama: string;
     tone: string;
     target_audiens: string;
     call_to_action: string;
     keyword: string;
     panjang_caption: string;
+    promosi_khusus: string;
 };
 
 export const CaptionProdukSettingInitial: CaptionProdukSettingType = {
-    tema: "",
     nama_produk: "",
     deskripsi_produk: "",
     harga_produk: "",
-    sosial_media: "",
+    manfaat_utama: "",
     tone: "",
     target_audiens: "",
     call_to_action: "",
     keyword: "",
     panjang_caption: "",
+    promosi_khusus: "",
 };
 
 export default function CaptionProdukTab() {
@@ -77,38 +77,16 @@ export default function CaptionProdukTab() {
         <section>
             <Card className="mb-4">
                 <Heading as="h4" size="3">
-                    Buat Caption Sosial Media
+                    Buat Caption Produk
                 </Heading>
                 <Text as="p" size="1">
-                    Minta bantuan AI Asisten untuk membuat caption sosial media.
+                    Minta bantuan AI Asisten untuk membuat caption pada produk
+                    Anda.
                 </Text>
 
                 <Separator my="3" size="4" />
                 <Grid gap="4" columns={{ md: "2", sm: "1" }} width="auto">
                     <DataList.Root className="h-min">
-                        <DataList.Item>
-                            <DataList.Label minWidth="88px">
-                                Tema / Topik
-                            </DataList.Label>
-                            <DataList.Value>
-                                <Box className="w-full">
-                                    <TextField.Root
-                                        className="w-full"
-                                        size="2"
-                                        value={setting.tema}
-                                        onChange={(e) =>
-                                            setSetting((oldState) => ({
-                                                ...oldState,
-                                                tema: e.target.value,
-                                            }))
-                                        }
-                                    />
-                                    <Blockquote size="1">
-                                        Contoh : Promosi produk baru skincare
-                                    </Blockquote>
-                                </Box>
-                            </DataList.Value>
-                        </DataList.Item>
                         <DataList.Item>
                             <DataList.Label minWidth="88px">
                                 Nama Produk
@@ -127,7 +105,8 @@ export default function CaptionProdukTab() {
                                         }
                                     />
                                     <Blockquote size="1">
-                                        Contoh : Scrum Care
+                                        Nama lengkap produk atau layanan yang
+                                        akan dipromosikan.
                                     </Blockquote>
                                 </Box>
                             </DataList.Value>
@@ -151,8 +130,8 @@ export default function CaptionProdukTab() {
                                         }
                                     />
                                     <Blockquote size="1">
-                                        Contoh : Serum wajah dengan kandungan
-                                        vitamin C, melembapkan kulit
+                                        Penjelasan singkat tentang fitur,
+                                        manfaat, atau keunggulan produk.
                                     </Blockquote>
                                 </Box>
                             </DataList.Value>
@@ -175,30 +154,55 @@ export default function CaptionProdukTab() {
                                         }
                                     />
                                     <Blockquote size="1">
-                                        Contoh : Rp25000
+                                        Harga produk. Contoh : Rp25000
                                     </Blockquote>
                                 </Box>
                             </DataList.Value>
                         </DataList.Item>
                         <DataList.Item>
                             <DataList.Label minWidth="88px">
-                                Sosial Media
+                                Manfaat Utama
                             </DataList.Label>
                             <DataList.Value>
                                 <Box className="w-full">
                                     <TextField.Root
                                         className="w-full"
                                         size="2"
-                                        value={setting.sosial_media}
+                                        value={setting.manfaat_utama}
                                         onChange={(e) =>
                                             setSetting((oldState) => ({
                                                 ...oldState,
-                                                sosial_media: e.target.value,
+                                                manfaat_utama: e.target.value,
                                             }))
                                         }
                                     />
                                     <Blockquote size="1">
-                                        Contoh : Instagram
+                                        Apa keuntungan utama yang didapat
+                                        konsumen dengan membeli produk ini?
+                                    </Blockquote>
+                                </Box>
+                            </DataList.Value>
+                        </DataList.Item>
+                        <DataList.Item>
+                            <DataList.Label minWidth="88px">
+                                Promosi Khusus
+                            </DataList.Label>
+                            <DataList.Value>
+                                <Box className="w-full">
+                                    <TextField.Root
+                                        className="w-full"
+                                        size="2"
+                                        value={setting.promosi_khusus}
+                                        onChange={(e) =>
+                                            setSetting((oldState) => ({
+                                                ...oldState,
+                                                promosi_khusus: e.target.value,
+                                            }))
+                                        }
+                                    />
+                                    <Blockquote size="1">
+                                        Apakah ada diskon, penawaran khusus,
+                                        atau event terkait produk?
                                     </Blockquote>
                                 </Box>
                             </DataList.Value>
@@ -223,7 +227,8 @@ export default function CaptionProdukTab() {
                                         }
                                     />
                                     <Blockquote size="1">
-                                        Contoh : Lucu dan santai
+                                        Bagaimana Anda ingin menyampaikan pesan?
+                                        (lucu, formal, inspiratif, dll.)
                                     </Blockquote>
                                 </Box>
                             </DataList.Value>
@@ -246,7 +251,9 @@ export default function CaptionProdukTab() {
                                         }
                                     />
                                     <Blockquote size="1">
-                                        Contoh : Wanita berusia 20-30 tahun
+                                        Siapa yang ingin Anda sasar dengan
+                                        produk ini? (umur, jenis kelamin, minat,
+                                        dll.)
                                     </Blockquote>
                                 </Box>
                             </DataList.Value>
@@ -269,8 +276,9 @@ export default function CaptionProdukTab() {
                                         }
                                     />
                                     <Blockquote size="1">
-                                        Contoh : Ajak followers untuk membeli
-                                        produk atau memberikan komentar
+                                        Apa tindakan yang ingin Anda dorong dari
+                                        audiens? (beli sekarang, kunjungi
+                                        website, dll.)
                                     </Blockquote>
                                 </Box>
                             </DataList.Value>
@@ -293,8 +301,8 @@ export default function CaptionProdukTab() {
                                         }
                                     />
                                     <Blockquote size="1">
-                                        Contoh : #skincarenatural, #glowingskin,
-                                        #kulitcerah
+                                        Kata kunci yang relevan dengan produk
+                                        dan ingin dipromosikan.
                                     </Blockquote>
                                 </Box>
                             </DataList.Value>
@@ -317,7 +325,8 @@ export default function CaptionProdukTab() {
                                         }
                                     />
                                     <Blockquote size="1">
-                                        Contoh : Pendek
+                                        Panjang caption yang ingin dibuat
+                                        (panjang, pendek, sedang)
                                     </Blockquote>
                                 </Box>
                             </DataList.Value>
